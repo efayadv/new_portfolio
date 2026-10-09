@@ -1,0 +1,51 @@
+.table-brand {
+  width: min(100%, 720px);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.table-brand h1 {
+  margin: 0;
+  @media (max-width: 600px) {
+    .table-brand h1 {
+        max-width: 320px;
+        margin-inline: auto;
+        font-size: clamp(2.5rem, 10vw, 3.5rem);
+    }
+    }
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.table-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(24px, 5vw, 64px);
+
+  width: min(100%, 560px);
+  margin: 28px auto 0;
+  padding: 12px 20px;
+
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  border-radius: 0 0 50% 50%;
+
+  font-size: 1.5rem;
+}
+
+.monogram {
+  font-size: 2.5rem;
+  letter-spacing: -0.12em;
+  padding-right: 0.12em;
+}
+
+@media (max-width: 600px) {
+  .table-brand h1 {
+    max-width: 320px;
+    margin-inline: auto;
+    font-size: clamp(3rem, 13vw, 4.5rem);
+  }
+}

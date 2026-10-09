@@ -1,0 +1,26 @@
+.blackjack-table {
+  min-height: 85svh;
+  padding: 70px 24px 120px;
+
+  background: radial-gradient(
+    ellipse at 50% 30%,
+    #16733f 0%,
+    #09552d 55%,
+    #043b21 100%
+  );
+
+  border-bottom: 18px solid #573322;
+  border-radius: 0 0 50% 50% / 0 0 15% 15%;
+
+  box-shadow:
+    0 14px 0 #211f1c,
+    0 27px 0 #111210,
+    0 35px 25px rgb(0 0 0 / 45%);
+}
+
+@media (max-width: 600px) {
+  .blackjack-table {
+    min-height: 78svh;
+    padding-top: 48px;
+  }
+}
