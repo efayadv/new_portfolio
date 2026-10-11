@@ -1,32 +1,114 @@
 /* Navigation */
 
+
+/* Navigation printed over the felt */
+
 .portfolio-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 14px;
-  padding: 24px 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-areas:
+    "resume projects"
+    "prompt prompt"
+    "experience contact";
+
+  align-items: center;
+  column-gap: clamp(24px, 10vw, 160px);
+  row-gap: 8px;
+
+  width: min(100%, 820px);
+  margin: 40px auto 0;
+  padding: 0 16px;
+}
+
+.portfolio-nav__resume {
+  grid-area: resume;
+}
+
+.portfolio-nav__projects {
+  grid-area: projects;
+}
+
+.portfolio-nav__experience {
+  grid-area: experience;
+}
+
+.portfolio-nav__contact {
+  grid-area: contact;
 }
 
 .portfolio-nav button {
+  justify-self: center;
+  min-width: 0;
   min-height: 48px;
-  min-width: 140px;
-  padding: 12px 22px;
-  border: 1px solid #e7dab0;
-  border-radius: 8px;
-  background: #092b20;
+  padding: 8px 12px;
+
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  box-shadow: none;
+
+  font-family: inherit;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(20px, 2.2vw, 30px);
   color: #f3e8c5;
+
   cursor: pointer;
+  transition:
+    color 180ms ease,
+    text-shadow 180ms ease;
 }
 
 .portfolio-nav button[aria-pressed="true"] {
-  background: #f3e8c5;
-  color: #133b29;
+  background: transparent;
+  color: #fff5d8;
+  text-shadow: 0 0 10px rgb(255 229 162 / 35%);
 }
 
-.portfolio-nav button:hover {
-  box-shadow: 0 0 18px rgb(243 232 197 / 15%);
+@media (hover: hover) {
+  .portfolio-nav button:hover {
+    color: #fff9e9;
+    background: transparent;
+    box-shadow: none;
+    text-shadow:
+      0 0 8px rgb(255 238 192 / 65%),
+      0 0 20px rgb(255 221 140 / 35%);
+  }
 }
+
+.portfolio-nav button:focus-visible {
+  outline: 2px solid #ead69e;
+  outline-offset: 4px;
+  text-shadow: 0 0 12px rgb(255 238 192 / 60%);
+}
+
+.table-prompt {
+  grid-area: prompt;
+  margin: 0;
+  padding: 4px 0;
+
+  text-align: center;
+  font-family: inherit;
+  font-style: italic;
+  font-size: clamp(13px, 1.3vw, 17px);
+  color: #f3e8c5;
+}
+
+@media (max-width: 600px) {
+  .portfolio-nav {
+    column-gap: 16px;
+    row-gap: 6px;
+    margin-top: 24px;
+    padding-inline: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-nav button {
+    transition: none;
+  }
+}
+
 
 button:focus-visible,
 a:focus-visible {
@@ -296,6 +378,49 @@ body:has(dialog[open]) {
   }
 
   .playing-card {
+    transition: none;
+  }
+}
+
+.table-back {
+  position: absolute;
+  bottom: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  min-height: 48px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+
+  font-family: inherit;
+  font-style: italic;
+  font-size: clamp(18px, 2.5svh, 25px);
+  color: #f3e8c5;
+  white-space: nowrap;
+
+  cursor: pointer;
+  transition: color 180ms ease, text-shadow 180ms ease;
+}
+
+@media (hover: hover) {
+  .table-back:hover {
+    color: #fff9e9;
+    text-shadow:
+      0 0 8px rgb(255 238 192 / 65%),
+      0 0 20px rgb(255 221 140 / 35%);
+  }
+}
+
+.table-back:focus-visible {
+  outline: 2px solid #ead69e;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .table-back {
     transition: none;
   }
 }

@@ -1,17 +1,13 @@
 .blackjack-table {
-  /* Adjust these to fine-tune the framing */
-  --table-zoom: 1.18;
-  --table-position-y: 50%;
-
   position: relative;
   isolation: isolate;
   width: 100%;
-  min-height: 720px;
+  height: 100%;
+  min-height: 0;
   overflow: hidden;
   background: #080c09;
 }
 
-/* Background artwork */
 .blackjack-table__background {
   position: absolute;
   inset: 0;
@@ -19,47 +15,111 @@
 
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center var(--table-position-y);
+  object-fit: contain;
+  object-position: center;
 
-  transform: scale(var(--table-zoom));
-  transform-origin: center center;
+  transform: scale(1.18);
+  transform-origin: 50% 75%;
 
   pointer-events: none;
   user-select: none;
 }
 
-/* Name, cards, and other interactive content */
 .blackjack-table__content {
   position: relative;
-  padding: 55px 24px 210px;
+  width: 100%;
+  height: 100%;
+  padding: 0;
 }
 
+/* Deck near the dealer's side */
+.blackjack-table .dealer-area {
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0;
+}
+
+.blackjack-table .dealer-deck {
+  width: clamp(48px, 8svh, 85px);
+}
+
+/* Printed name */
+.blackjack-table .table-brand {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(60%, 620px);
+  margin: 0;
+  padding: 0;
+}
+
+/* Dealt cards */
 .blackjack-table .deal-stage {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 86%;
   max-width: 1100px;
-  margin-inline: auto;
+  margin: 0;
 }
 
-@media (min-width: 1000px) {
-  .blackjack-table {
-    min-height: max(720px, 85svh);
-  }
-
-  .blackjack-table__content {
-    padding-top: 65px;
-  }
+.blackjack-table .hand-scroll {
+  padding: 10px 0;
+  overflow: visible;
 }
 
-@media (max-width: 600px) {
-  .blackjack-table {
-    /* Cover already crops the landscape image on mobile */
-    --table-zoom: 1;
-    --table-position-y: 100%;
+.blackjack-table .card-hand {
+  flex-wrap: nowrap;
+  gap: clamp(6px, 1.2vw, 18px);
+}
 
-    min-height: 680px;
-  }
+.blackjack-table .card-slot {
+  width: min(15vw, 19svh, 160px);
+  min-width: 0;
+  flex: 0 1 auto;
+}
 
-  .blackjack-table__content {
-    padding: 40px 12px 190px;
-  }
+/* Menu stays in one place when cards are dealt */
+.blackjack-table .portfolio-nav {
+  position: absolute;
+  top: auto;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "resume projects"
+    "prompt prompt"
+    "experience contact";
+
+  width: min(68%, 760px);
+  height: auto;
+  min-height: 0;
+
+  column-gap: 40px;
+  row-gap: 4px;
+  align-items: center;
+  align-content: center;
+
+  margin: 0;
+  padding: 0;
+}
+
+.blackjack-table .portfolio-nav button {
+  font-size: clamp(18px, 2.8svh, 27px);
+}
+
+.blackjack-table .table-prompt {
+  grid-area: prompt;
+  margin: 0;
+  padding: 4px 0;
+  line-height: 1.4;
+  text-align: center;
 }

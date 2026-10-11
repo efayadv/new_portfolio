@@ -39,22 +39,31 @@ export default function App() {
         <TableBrand />
 
         {activeSection ? (
-          <CardHand
-            key={dealNumber}
-            items={portfolio[activeSection]}
-            onSelect={selectCard}
-          />
+          <>
+            <CardHand
+              key={dealNumber}
+              items={portfolio[activeSection]}
+              onSelect={selectCard}
+            />
+
+            <button
+              type="button"
+              className="table-back"
+              onClick={() => {
+                setSelection(null);
+                setActiveSection(null);
+              }}
+            >
+              ← Back to options
+            </button>
+          </>
         ) : (
-          <p className="table-prompt">
-            Choose a section to deal your cards.
-          </p>
+          <PortfolioNav
+            activeSection={activeSection}
+            onSelect={selectSection}
+          />
         )}
       </BlackjackTable>
-
-      <PortfolioNav
-        activeSection={activeSection}
-        onSelect={selectSection}
-      />
 
       {selection && (
         <DetailModal

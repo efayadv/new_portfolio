@@ -2,8 +2,8 @@ import type { Section } from "../../data/portfolio";
 
 const options: { id: Section; label: string }[] = [
   { id: "resume", label: "Résumé" },
-  { id: "experience", label: "Experience" },
   { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -22,12 +22,19 @@ export default function PortfolioNav({
         <button
           key={id}
           type="button"
+          className={`portfolio-nav__${id}`}
           aria-pressed={activeSection === id}
           onClick={() => onSelect(id)}
         >
           {label}
         </button>
       ))}
+
+      <p className="table-prompt">
+        {activeSection
+          ? "Select a card to explore."
+          : "Choose a section to deal your cards."}
+      </p>
     </nav>
   );
 }
