@@ -1,0 +1,61 @@
+.dealer-area {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 22px;
+}
+
+.dealer-deck {
+  position: relative;
+  width: clamp(72px, 8vw, 105px);
+  aspect-ratio: 5 / 7;
+
+  padding: 6px;
+  border: 1px solid #ccc8bc;
+  border-radius: 7px;
+  background: #fffdf3;
+
+  /* Match the flattened tabletop perspective */
+  transform: perspective(900px) rotateX(32deg) rotateZ(-8deg);
+  transform-origin: center;
+
+  box-shadow:
+    0 2px 0 #c8c5bc,
+    0 4px 0 #fffdf3,
+    0 6px 0 #c8c5bc,
+    0 8px 0 #fffdf3,
+    0 10px 0 #aaa79f,
+    3px 16px 12px rgb(0 0 0 / 35%);
+}
+
+.dealer-deck__back {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  border: 1px solid #e0cda3;
+  border-radius: 3px;
+
+  background-color: #742329;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 5px,
+      rgb(244 221 175 / 20%) 5px 6px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 5px,
+      rgb(244 221 175 / 20%) 5px 6px
+    );
+}
+
+.dealer-deck__ornament {
+  display: grid;
+  place-items: center;
+  width: 65%;
+  aspect-ratio: 1;
+  border: 1px solid #ddc596;
+  border-radius: 50%;
+  background: #742329;
+  color: #ead69e;
+  font-size: 30px;
+}

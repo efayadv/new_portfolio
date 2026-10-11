@@ -17,12 +17,18 @@ export default function CardHand({ items, onSelect }: Props) {
     const stage = stageRef.current;
     if (!stage) return;
 
-    const dealer = stage.querySelector<HTMLElement>(".dealer-origin");
+    const table = stage.closest(".blackjack-table");
+    const deck = table?.querySelector<HTMLElement>(
+      "[data-dealer-deck]",
+    );
+
+    if (!deck) {
+      stage.dataset.ready = "true";
+      return;
+    }
+
+    const origin = deck.getBoundingClientRect();
     const slots = stage.querySelectorAll<HTMLElement>(".card-slot");
-
-    if (!dealer) return;
-
-    const origin = dealer.getBoundingClientRect();
 
     slots.forEach((slot, index) => {
       const destination = slot.getBoundingClientRect();
@@ -37,7 +43,18 @@ export default function CardHand({ items, onSelect }: Props) {
 
       slot.style.setProperty("--deal-x", `${x}px`);
       slot.style.setProperty("--deal-y", `${y}px`);
-      slot.style.setProperty("--deal-delay", `${index * 140}ms`);
+
+      slot.style.setProperty(
+        "--deal-scale-x",
+        `${origin.width / destination.width}`,
+      );
+
+      slot.style.setProperty(
+        "--deal-scale-y",
+        `${origin.height / destination.height}`,
+      );
+
+      slot.style.setProperty("--deal-delay", `${index * 180}ms`);
     });
 
     stage.dataset.ready = "true";
@@ -45,8 +62,6 @@ export default function CardHand({ items, onSelect }: Props) {
 
   return (
     <div className="deal-stage" ref={stageRef}>
-      <div className="dealer-origin" aria-hidden="true" />
-
       <div className="hand-scroll">
         <div className="card-hand">
           {items.map((item) => (

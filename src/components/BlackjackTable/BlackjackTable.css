@@ -1,26 +1,65 @@
 .blackjack-table {
-  min-height: 85svh;
-  padding: 70px 24px 120px;
+  /* Adjust these to fine-tune the framing */
+  --table-zoom: 1.18;
+  --table-position-y: 50%;
 
-  background: radial-gradient(
-    ellipse at 50% 30%,
-    #16733f 0%,
-    #09552d 55%,
-    #043b21 100%
-  );
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-height: 720px;
+  overflow: hidden;
+  background: #080c09;
+}
 
-  border-bottom: 18px solid #573322;
-  border-radius: 0 0 50% 50% / 0 0 15% 15%;
+/* Background artwork */
+.blackjack-table__background {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
 
-  box-shadow:
-    0 14px 0 #211f1c,
-    0 27px 0 #111210,
-    0 35px 25px rgb(0 0 0 / 45%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center var(--table-position-y);
+
+  transform: scale(var(--table-zoom));
+  transform-origin: center center;
+
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Name, cards, and other interactive content */
+.blackjack-table__content {
+  position: relative;
+  padding: 55px 24px 210px;
+}
+
+.blackjack-table .deal-stage {
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+@media (min-width: 1000px) {
+  .blackjack-table {
+    min-height: max(720px, 85svh);
+  }
+
+  .blackjack-table__content {
+    padding-top: 65px;
+  }
 }
 
 @media (max-width: 600px) {
   .blackjack-table {
-    min-height: 78svh;
-    padding-top: 48px;
+    /* Cover already crops the landscape image on mobile */
+    --table-zoom: 1;
+    --table-position-y: 100%;
+
+    min-height: 680px;
+  }
+
+  .blackjack-table__content {
+    padding: 40px 12px 190px;
   }
 }

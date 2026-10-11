@@ -1,51 +1,72 @@
 .table-brand {
-  width: min(100%, 720px);
+  --print-width: 760px;
+  --print-flattening: 0.78;
+
+  width: min(100%, var(--print-width));
   margin-inline: auto;
-  text-align: center;
+  padding-top: 0;
+
+  /*
+   * Blends the lettering with the actual image underneath.
+   * Screen keeps the ivory and red visible on dark green felt.
+   */
+  mix-blend-mode: screen;
 }
 
-.table-brand h1 {
-  margin: 0;
-  @media (max-width: 600px) {
-    .table-brand h1 {
-        max-width: 320px;
-        margin-inline: auto;
-        font-size: clamp(2.5rem, 10vw, 3.5rem);
-    }
-    }
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  line-height: 1.05;
-  text-transform: uppercase;
+.table-brand__printing {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+
+  /* Approximate the foreshortening of the tabletop */
+  transform: scaleY(var(--print-flattening));
+  transform-origin: center;
 }
 
-.table-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(24px, 5vw, 64px);
-
-  width: min(100%, 560px);
-  margin: 28px auto 0;
-  padding: 12px 20px;
-
-  border-top: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  border-radius: 0 0 50% 50%;
-
-  font-size: 1.5rem;
+.table-brand__lines {
+  fill: none;
+  stroke: #e4ce91;
+  stroke-width: 3;
+  stroke-linecap: round;
 }
 
-.monogram {
-  font-size: 2.5rem;
-  letter-spacing: -0.12em;
-  padding-right: 0.12em;
+.table-brand__name,
+.table-brand__odds {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+}
+
+.table-brand__name {
+  fill: #ead69e;
+  font-size: 64px;
+  letter-spacing: 2px;
+}
+
+.table-brand__odds {
+  fill: #d82020;
+  font-size: 45px;
+  letter-spacing: 1px;
+}
+
+/* Keep a real heading available to screen readers */
+.table-brand__accessible-name {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 @media (max-width: 600px) {
-  .table-brand h1 {
-    max-width: 320px;
-    margin-inline: auto;
-    font-size: clamp(3rem, 13vw, 4.5rem);
+  .table-brand {
+    --print-width: 480px;
+    --print-flattening: 0.88;
+
+    padding-top: 0;
   }
 }

@@ -9,6 +9,7 @@ import { portfolio } from "./data/portfolio";
 import type { PortfolioItem, Section } from "./data/portfolio";
 import "./App.css";
 import "./styles/cards.css";
+import DealerDeck from "./components/DealerDeck/DealerDeck";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState<Section | null>(null);
@@ -34,6 +35,7 @@ export default function App() {
   return (
     <main className="portfolio">
       <BlackjackTable>
+        <DealerDeck />
         <TableBrand />
 
         {activeSection ? (
