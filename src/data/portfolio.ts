@@ -12,6 +12,11 @@ export type PortfolioItem = {
   links?: {
     label: string;
     href: string;
+    icon?: string;
+  }[];
+  images?: {
+    src: string;
+    alt: string;
   }[];
 };
 
@@ -24,7 +29,13 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
       title: "About Me",
       subtitle: "Who am I?",
       description:
-        "Hello! I am Emilio! - Computer Science Grad from the University of Wisconsin - Madison with a passion for Software Development.\nI love solving ambiguous problems and coming up with a software solution.\nIf I am not coding, I am playing the drums, listening to music, or playing blackjack!\n\nCurrently looking for full-time roles as a Software Engineer, Full-Stack Developer, or Applied AI Engineer"
+        "Hello! I am Emilio! - Computer Science Grad from the University of Wisconsin - Madison with a passion for Software Development.\nI love solving ambiguous problems and coming up with a software solution.\nIf I am not coding, I am playing the drums, listening to music, or playing blackjack!\n\nCurrently looking for full-time roles as a Software Engineer, Full-Stack Developer, or Applied AI Engineer",
+      images: [
+        {
+          src: "/images/gradpic.png",
+          alt: "graduation",
+        },
+      ]
     },
   ],
   projects: [
@@ -44,7 +55,7 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
         "Full reservation workflow and email worker"
       ],
       links: [
-        { label: "GitHub", href: "https://github.com/efayadv/villart" },
+        { label: "GitHub", href: "https://github.com/efayadv/villart", icon: "/icons/github.svg" },
         { label: "Website", href: "https://www.villart.com.mx/" },
       ]
     },
@@ -62,6 +73,16 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
         "Supabase for edge functions triggering notifications.",
         "Handles Authentication, Authorization, and Row-Level Security to protect user data",
       ],
+      images: [
+        {
+          src: "/images/glance_map.png",
+          alt: "glance-map",
+        },
+        {
+          src: "/images/glance_chat.png",
+          alt: "glance-chat",
+        },
+      ]
     },
     {
       id: "message-broker",
@@ -77,7 +98,7 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
         "Custom binary TCP protocols.",
       ],
       links: [
-        { label: "Github", href: "https://github.com/efayadv/kafka_ds" },
+        { label: "Github", href: "https://github.com/efayadv/kafka_ds", icon: "/icons/github.svg", },
       ]
     },
     {
@@ -124,7 +145,7 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
         "JUnit testing for each workflow stage",
       ],
       links: [
-        { label: "Github", href: "https://github.com/efayadv/Compiler_project" }
+        { label: "Github", href: "https://github.com/efayadv/Compiler_project", icon: "/icons/github.svg", }
       ]
     },
     {
@@ -140,7 +161,7 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
         "Leader coordination and replication.",
       ],
       links: [
-        { label: "Github", href: "https://github.com/efayadv/gravity_simulation" }
+        { label: "Github", href: "https://github.com/efayadv/gravity_simulation", icon: "/icons/github.svg" }
       ]
     }, 
     {
@@ -156,7 +177,7 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
         "Vercel Deployment",
       ],
       links: [
-        { label: "Github", href: "https://github.com/efayadv/new_portfolio" }
+        { label: "Github", href: "https://github.com/efayadv/new_portfolio", icon: "/icons/github.svg" }
       ]
     }
   ],
@@ -239,8 +260,8 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
       // Add your actual links:
       links: [
         { label: "Email me", href: "emiliofav@gmail.com" },
-        { label: "GitHub", href: "https://github.com/efayadv" },
-        { label: "LinkedIn", href: "https://www.linkedin.com/in/emilio-fayad"}
+        { label: "GitHub", href: "https://github.com/efayadv", icon: "/icons/github.svg",},
+        { label: "LinkedIn", href: "https://www.linkedin.com/in/emilio-fayad", icon: "/icons/linkedin.svg",}
       ],
     },
   ],

@@ -13,6 +13,15 @@ type Props = {
   onClose: () => void;
 };
 
+type Project = {
+  title: string;
+  description: string;
+  imges?: {
+    src: string,
+    alt: string,
+  }[];
+};
+
 export default function DetailModal({ selection, onClose }: Props) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const { item, rect, trigger } = selection;
@@ -124,11 +133,31 @@ export default function DetailModal({ selection, onClose }: Props) {
         </ul>
       )}
 
+      {item.images && item.images.length > 0 && (
+        <div className="modal-images">
+          {item.images.map((image) => (
+            <figure key={image.src} className="modal-image">
+              <img
+                src={image.src}
+                alt={image.alt}
+                loading="lazy"
+              />
+            </figure>
+          ))}
+        </div>
+      )}
+
       {item.links && (
         <div className="modal-links">
           {item.links.map((link) => (
             <a key={link.href} href={link.href}>
-              {link.label} ↗
+              <img
+                src={link.icon ?? "/icons/website.svg"}
+                alt=""
+                aria-hidden="true"
+                className="link-icon"
+              />
+              <span>{link.label}</span>
             </a>
           ))}
         </div>
