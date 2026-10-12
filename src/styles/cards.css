@@ -18,7 +18,8 @@
 }
 button:focus-visible, a:focus-visible { outline: 2px solid #d9ad49; outline-offset: 3px; }
 /* Scroll stays inside the card row; flight clones are rendered above it. */
-.hand-scroll { overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 12px 0 18px; }
+.hand-scroll { overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 12px 0 18px; max-width: calc(var(--card-width) * 5 + 96px);
+  margin-inline: auto; }
 .hand-scroll::-webkit-scrollbar { display: none; }
 .card-hand { display: flex; gap: 16px; width: max-content; min-width: 100%; justify-content: center; padding-inline: 16px; }
 .card-slot { width: var(--card-width); aspect-ratio: 5/7; flex: none; scroll-snap-align: center; }

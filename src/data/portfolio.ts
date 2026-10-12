@@ -22,7 +22,7 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
       rank: "K",
       suit: "♠",
       title: "About Me",
-      subtitle: "Meet Emilio",
+      subtitle: "Who am I?",
       description:
         "Hello! I am Emilio! - Computer Science Grad from the University of Wisconsin - Madison with a passion for Software Development.\nI love solving ambiguous problems and coming up with a software solution.\nIf I am not coding, I am playing the drums, listening to music, or playing blackjack!\n\nCurrently looking for full-time roles as a Software Engineer, Full-Stack Developer, or Applied AI Engineer"
     },
@@ -32,53 +32,81 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
       id: "villart",
       rank: "A",
       suit: "♠",
-      title: "Villart",
+      title: "Villart - Web App",
       subtitle: "React, JavaScript, Node.js, PostgreSQL",
       description:
-        "A website for discovering art classes and reserving places.",
+        "Full-Stack website for art studio with sign up/reservation feature",
       highlights: [
-        "React frontend with an Express API.",
-        "PostgreSQL stores class sessions and registrations.",
-        "Reservation workflow supports bank-transfer payments.",
+        "Handles 100+ users monthly",
+        "Uses Express API to communicate with database",
+        "PostgreSQL for database schema and domain logic",
+        "Websocket communication for efficient updates",
+        "Full reservation workflow and email worker"
       ],
+      links: [
+        { label: "GitHub", href: "https://github.com/efayadv/villart" },
+        { label: "Website", href: "https://www.villart.com.mx/" },
+      ]
     },
     {
       id: "glance",
       rank: "K",
       suit: "♥",
-      title: "Glance",
-      subtitle: "Discover local nightlife",
+      title: "Glance - Mobile App",
+      subtitle: "React Native, PostgreSQL, TypeScript, Supabase",
       description:
-        "A mobile app combining venue discovery, reels, and conversations.",
+        "A mobile app for venue discovery and wait-line time display",
       highlights: [
         "Built with React Native and Expo.",
-        "Supabase and PostgreSQL provide the backend.",
+        "Supabase and PostgreSQL for backend.",
+        "Supabase for edge functions triggering notifications.",
+        "Handles Authentication, Authorization, and Row-Level Security to protect user data",
       ],
     },
     {
       id: "message-broker",
       rank: "J",
       suit: "♣",
-      title: "Message Broker",
-      subtitle: "Distributed systems · Java",
+      title: "Kafka Message Broker",
+      subtitle: "Java, Zookeeper, TCP/IP",
       description:
         "A Kafka-inspired distributed message broker built with Java and ZooKeeper.",
       highlights: [
         "Topic partitions and persistent message storage.",
-        "Leader coordination and replication.",
+        "Leader coordination and replication with Zookeper.",
+        "Custom binary TCP protocols.",
       ],
+      links: [
+        { label: "Github", href: "https://github.com/efayadv/kafka_ds" },
+      ]
     },
     {
       id: "eciton",
       rank: "K",
       suit: "♥",
       title: "ETL pipeline",
-      subtitle: "Distributed systems · Java",
+      subtitle: "Python, OCR/YOLO, PostgreSQL",
       description:
-        "A Kafka-inspired distributed message broker built with Java and ZooKeeper.",
+        "A computer vision ETL pipeline to turn raw images into structured data for Eciton",
       highlights: [
-        "Topic partitions and persistent message storage.",
-        "Leader coordination and replication.",
+        "Python with OpenCV, Numpy, and Pandas for preprocessing and postprocessing",
+        "Supervised YOLO models and TrOCR/PaddleOCR for data extraction",
+        "Trained a RNN-CNN architecture to optimize character recognition",
+        "JSON conversion and PostgreSQL for storing",
+      ],
+    },
+    {
+      id: "eciton-rag",
+      rank: "J",
+      suit: "♥",
+      title: "Database AI Agent",
+      subtitle: "LlamaIndex, SQL",
+      description:
+        "A Natural Language Querying AI Agent (RAG) for Eciton",
+      highlights: [
+        "LlamaIndex to answer natural-language questions about retail data.",
+        "SQL Queries for retrieving relevant records",
+        "Used embeddings and vector search to find information based on semantic similarity.",
       ],
     },
     {
@@ -86,13 +114,18 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
       rank: "J",
       suit: "♠",
       title: "Language Compiler",
-      subtitle: "Distributed systems · Java",
+      subtitle: "Java, JUnit, Assembly",
       description:
-        "A Kafka-inspired distributed message broker built with Java and ZooKeeper.",
+        "Java Language Compiler to turn my own language into machine code",
       highlights: [
-        "Topic partitions and persistent message storage.",
-        "Leader coordination and replication.",
+        "Tokenization, Lexical Analysis, Abstract Syntax Tree, and Semantic Analysis",
+        "Intermediate Representation and Linking to produce final executable",
+        "MIPS Assembly optimization",
+        "JUnit testing for each workflow stage",
       ],
+      links: [
+        { label: "Github", href: "https://github.com/efayadv/Compiler_project" }
+      ]
     },
     {
       id: "gravity",
@@ -101,11 +134,30 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
       title: "Gravity Sandbox",
       subtitle: "C++, CMake",
       description:
-        "A Kafka-inspired distributed message broker built with Java and ZooKeeper.",
+        "Playful tool I made to learn some C++",
       highlights: [
         "Topic partitions and persistent message storage.",
         "Leader coordination and replication.",
       ],
+      links: [
+        { label: "Github", href: "https://github.com/efayadv/gravity_simulation" }
+      ]
+    }, 
+    {
+      id: "portfolio",
+      rank: "Q",
+      suit: "♣",
+      title: "Portfolio Website",
+      subtitle: "React, TypeScript",
+      description:
+        "This website!",
+      highlights: [
+        "React, TypeScrip, and TailwindCSS",
+        "Vercel Deployment",
+      ],
+      links: [
+        { label: "Github", href: "https://github.com/efayadv/new_portfolio" }
+      ]
     }
   ],
 
@@ -183,12 +235,13 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
       title: "Contact",
       subtitle: "Let’s connect",
       description:
-        "Interested in working together? Get in touch.",
+        "Interested in working together? Get in touch.\nI'll get back within a day.",
       // Add your actual links:
-      // links: [
-      //   { label: "Email me", href: "mailto:you@example.com" },
-      //   { label: "GitHub", href: "https://github.com/your-username" },
-      // ],
+      links: [
+        { label: "Email me", href: "emiliofav@gmail.com" },
+        { label: "GitHub", href: "https://github.com/efayadv" },
+        { label: "LinkedIn", href: "https://www.linkedin.com/in/emilio-fayad"}
+      ],
     },
   ],
 };
