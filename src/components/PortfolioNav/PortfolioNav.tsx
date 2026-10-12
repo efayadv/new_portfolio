@@ -1,6 +1,7 @@
 import type { Section } from "../../data/portfolio";
 
 const options: { id: Section; label: string }[] = [
+  { id: "about", label: "About Me" },
   { id: "resume", label: "Résumé" },
   { id: "projects", label: "Projects" },
   { id: "experience", label: "Experience" },

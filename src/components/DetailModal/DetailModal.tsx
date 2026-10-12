@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef } from "react";
+import ResumeViewer from "../ResumeViewer/ResumeViewer";
 import type { PortfolioItem } from "../../data/portfolio";
 
 export type CardSelection = {
@@ -68,7 +69,7 @@ export default function DetailModal({ selection, onClose }: Props) {
   return (
     <dialog
       ref={dialogRef}
-      className="detail-modal"
+      className={`detail-modal${item.pdf ? " detail-modal--resume" : ""}`}
       aria-labelledby="detail-title"
       aria-describedby="detail-subtitle"
       onCancel={(event) => {
@@ -109,6 +110,10 @@ export default function DetailModal({ selection, onClose }: Props) {
         {item.subtitle}
       </p>
 
+      {item.pdf ? (
+        <ResumeViewer url={item.pdf.url} downloadName={item.pdf.downloadName} />
+      ) : (
+        <>
       <p>{item.description}</p>
 
       {item.highlights && (
@@ -127,6 +132,8 @@ export default function DetailModal({ selection, onClose }: Props) {
             </a>
           ))}
         </div>
+      )}
+        </>
       )}
     </dialog>
   );

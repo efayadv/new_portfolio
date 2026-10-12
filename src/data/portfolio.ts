@@ -1,4 +1,4 @@
-export type Section = "resume" | "experience" | "projects" | "contact";
+export type Section = "about" | "resume" | "experience" | "projects" | "contact";
 
 export type PortfolioItem = {
   id: string;
@@ -7,6 +7,7 @@ export type PortfolioItem = {
   title: string;
   subtitle: string;
   description: string;
+  pdf?: { url: string; downloadName: string };
   highlights?: string[];
   links?: {
     label: string;
@@ -15,13 +16,24 @@ export type PortfolioItem = {
 };
 
 export const portfolio: Record<Section, PortfolioItem[]> = {
+  about: [
+    {
+      id: "about-me",
+      rank: "K",
+      suit: "♠",
+      title: "About Me",
+      subtitle: "Meet Emilio",
+      description:
+        "Hello! I am Emilio! - Computer Science Grad from the University of Wisconsin - Madison with a passion for Software Development.\nI love solving ambiguous problems and coming up with a software solution.\nIf I am not coding, I am playing the drums, listening to music, or playing blackjack!\n\nCurrently looking for full-time roles as a Software Engineer, Full-Stack Developer, or Applied AI Engineer"
+    },
+  ],
   projects: [
     {
       id: "villart",
       rank: "A",
       suit: "♠",
       title: "Villart",
-      subtitle: "Art studio booking platform",
+      subtitle: "React, JavaScript, Node.js, PostgreSQL",
       description:
         "A website for discovering art classes and reserving places.",
       highlights: [
@@ -56,6 +68,45 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
         "Leader coordination and replication.",
       ],
     },
+    {
+      id: "eciton",
+      rank: "K",
+      suit: "♥",
+      title: "ETL pipeline",
+      subtitle: "Distributed systems · Java",
+      description:
+        "A Kafka-inspired distributed message broker built with Java and ZooKeeper.",
+      highlights: [
+        "Topic partitions and persistent message storage.",
+        "Leader coordination and replication.",
+      ],
+    },
+    {
+      id: "compiler",
+      rank: "J",
+      suit: "♠",
+      title: "Language Compiler",
+      subtitle: "Distributed systems · Java",
+      description:
+        "A Kafka-inspired distributed message broker built with Java and ZooKeeper.",
+      highlights: [
+        "Topic partitions and persistent message storage.",
+        "Leader coordination and replication.",
+      ],
+    },
+    {
+      id: "gravity",
+      rank: "Q",
+      suit: "♣",
+      title: "Gravity Sandbox",
+      subtitle: "C++, CMake",
+      description:
+        "A Kafka-inspired distributed message broker built with Java and ZooKeeper.",
+      highlights: [
+        "Topic partitions and persistent message storage.",
+        "Leader coordination and replication.",
+      ],
+    }
   ],
 
   experience: [
@@ -63,32 +114,48 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
       id: "eciton",
       rank: "A",
       suit: "♦",
-      title: "Eciton",
-      subtitle: "AI Software Engineer Intern",
+      title: "AI Software Engineer Intern",
+      subtitle: "Eciton",
       description:
-        "Built a pipeline that converts retail shelf images into structured data.",
+        "June 2025 - Aug 2025",
       highlights: [
-        "Combined object detection, OCR, and data validation.",
-        "Integrated structured outputs with PostgreSQL.",
+        "Python",
+        "PostgreSQL",
+        "OCR",
+        "YOLO",
+        "ETL",
+        "RAG",
       ],
     },
     {
       id: "research",
       rank: "K",
       suit: "♠",
-      title: "Research",
-      subtitle: "Speech recognition and translation",
+      title: "Software Engineer - Research",
+      subtitle: "UW-Madison",
       description:
-        "Worked on multilingual speech-to-text and translation tools for classrooms.",
+        "Oct 2024 - March 2025",
+      highlights: [
+        "Python",
+        "Flask",
+        "FastAPI",
+        "Whisper AI",
+        "Google Cloud Storage",
+        "Project Documentation",
+      ]
     },
     {
       id: "fair-play",
       rank: "Q",
       suit: "♥",
-      title: "Fair Play",
-      subtitle: "Data & Logistics Intern",
+      title: "Data Analyst Intern",
+      subtitle: "Fair Play Retail",
       description:
-        "Analyzed sales and profitability data to support purchasing and supplier negotiations.",
+        "June 2023 - Aug 2023",
+      highlights: [
+        "Excel",
+        "Power BI",
+      ]
     },
   ],
 
@@ -98,11 +165,13 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
       rank: "A",
       suit: "♠",
       title: "Résumé",
-      subtitle: "Education, experience, and skills",
+      subtitle: "View resume here",
       description:
         "View my résumé for a complete overview of my background.",
-      // Put your PDF at public/resume.pdf, then uncomment:
-      // links: [{ label: "Open résumé", href: "/resume.pdf" }],
+      pdf: {
+        url: `${import.meta.env.BASE_URL}resume.pdf`,
+        downloadName: "Emilio-Fayad-Resume.pdf",
+      },
     },
   ],
 

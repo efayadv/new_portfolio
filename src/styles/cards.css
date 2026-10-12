@@ -1,5 +1,10 @@
 /* Navigation and back control */
-.portfolio-nav { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-template-areas: "resume projects" "prompt prompt" "experience contact"; gap: 4px 24px; align-items: center; margin: 0; padding: 0; }
+.portfolio-nav { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-template-areas: "resume projects" "about about" "prompt prompt" "experience contact"; gap: 4px 24px; align-items: center; margin: 0; padding: 0; grid-template-rows: auto 20px auto auto;}
+.portfolio-nav__about {
+  grid-area: about;
+  justify-self: center;
+  transform: translateY(-25px);
+}
 .portfolio-nav__resume { grid-area: resume; }
 .portfolio-nav__projects { grid-area: projects; }
 .portfolio-nav__experience { grid-area: experience; }
@@ -108,6 +113,10 @@ button:focus-visible, a:focus-visible { outline: 2px solid #d9ad49; outline-offs
   background: #fffdf6;
   color: #17291f;
   box-shadow: 0 25px 90px rgb(0 0 0 / 45%);
+}
+
+.detail-modal p {
+  white-space: pre-line;
 }
 
 .detail-modal::backdrop {
