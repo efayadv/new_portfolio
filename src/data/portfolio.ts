@@ -259,7 +259,7 @@ export const portfolio: Record<Section, PortfolioItem[]> = {
         "Interested in working together? Get in touch.\nI'll get back within a day.",
       // Add your actual links:
       links: [
-        { label: "Email me", href: "emiliofav@gmail.com" },
+        { label: "Email me", href: "mailto:emiliofav@gmail.com", icon: "/icons/mail.svg", },
         { label: "GitHub", href: "https://github.com/efayadv", icon: "/icons/github.svg",},
         { label: "LinkedIn", href: "https://www.linkedin.com/in/emilio-fayad", icon: "/icons/linkedin.svg",}
       ],
