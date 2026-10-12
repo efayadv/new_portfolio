@@ -13,15 +13,6 @@ type Props = {
   onClose: () => void;
 };
 
-type Project = {
-  title: string;
-  description: string;
-  imges?: {
-    src: string,
-    alt: string,
-  }[];
-};
-
 export default function DetailModal({ selection, onClose }: Props) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const { item, rect, trigger } = selection;
