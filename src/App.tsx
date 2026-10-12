@@ -52,6 +52,10 @@ export default function App() {
               onClick={() => {
                 setSelection(null);
                 setActiveSection(null);
+                const section = activeSection;
+                requestAnimationFrame(() => {
+                  document.querySelector<HTMLButtonElement>(`.portfolio-nav__${section}`)?.focus();
+                });
               }}
             >
               ← Back to options

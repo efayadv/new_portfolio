@@ -1,189 +1,27 @@
-/* Navigation */
-
-
-/* Navigation printed over the felt */
-
-.portfolio-nav {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-areas:
-    "resume projects"
-    "prompt prompt"
-    "experience contact";
-
-  align-items: center;
-  column-gap: clamp(24px, 10vw, 160px);
-  row-gap: 8px;
-
-  width: min(100%, 820px);
-  margin: 40px auto 0;
-  padding: 0 16px;
+/* Navigation and back control */
+.portfolio-nav { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); grid-template-areas: "resume projects" "prompt prompt" "experience contact"; gap: 4px 24px; align-items: center; margin: 0; padding: 0; }
+.portfolio-nav__resume { grid-area: resume; }
+.portfolio-nav__projects { grid-area: projects; }
+.portfolio-nav__experience { grid-area: experience; }
+.portfolio-nav__contact { grid-area: contact; }
+.portfolio-nav button, .table-back { min-height: 44px; padding: 8px 12px; border: 0; border-radius: 4px; background: transparent; color: #f3e8c5; font: italic clamp(18px, 2.8cqh, 27px) Georgia, serif; cursor: pointer; transition: color 180ms, text-shadow 180ms; }
+.portfolio-nav button { justify-self: center; }
+.table-back { white-space: nowrap; }
+.table-prompt { grid-area: prompt; margin: 0; padding: 4px 0; text-align: center; font: italic clamp(13px, 1.8cqh, 17px)/1.4 Georgia, serif; }
+@media (hover:hover) {
+  .portfolio-nav button:hover, .table-back:hover { color: #fff9e9; text-shadow: 0 0 8px #ffeec0a6, 0 0 20px #ffdd8c59; }
 }
-
-.portfolio-nav__resume {
-  grid-area: resume;
-}
-
-.portfolio-nav__projects {
-  grid-area: projects;
-}
-
-.portfolio-nav__experience {
-  grid-area: experience;
-}
-
-.portfolio-nav__contact {
-  grid-area: contact;
-}
-
-.portfolio-nav button {
-  justify-self: center;
-  min-width: 0;
-  min-height: 48px;
-  padding: 8px 12px;
-
-  border: none;
-  border-radius: 4px;
-  background: transparent;
-  box-shadow: none;
-
-  font-family: inherit;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(20px, 2.2vw, 30px);
-  color: #f3e8c5;
-
-  cursor: pointer;
-  transition:
-    color 180ms ease,
-    text-shadow 180ms ease;
-}
-
-.portfolio-nav button[aria-pressed="true"] {
-  background: transparent;
-  color: #fff5d8;
-  text-shadow: 0 0 10px rgb(255 229 162 / 35%);
-}
-
-@media (hover: hover) {
-  .portfolio-nav button:hover {
-    color: #fff9e9;
-    background: transparent;
-    box-shadow: none;
-    text-shadow:
-      0 0 8px rgb(255 238 192 / 65%),
-      0 0 20px rgb(255 221 140 / 35%);
-  }
-}
-
-.portfolio-nav button:focus-visible {
-  outline: 2px solid #ead69e;
-  outline-offset: 4px;
-  text-shadow: 0 0 12px rgb(255 238 192 / 60%);
-}
-
-.table-prompt {
-  grid-area: prompt;
-  margin: 0;
-  padding: 4px 0;
-
-  text-align: center;
-  font-family: inherit;
-  font-style: italic;
-  font-size: clamp(13px, 1.3vw, 17px);
-  color: #f3e8c5;
-}
-
-@media (max-width: 600px) {
-  .portfolio-nav {
-    column-gap: 16px;
-    row-gap: 6px;
-    margin-top: 24px;
-    padding-inline: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .portfolio-nav button {
-    transition: none;
-  }
-}
-
-
-button:focus-visible,
-a:focus-visible {
-  outline: 3px solid #d9ad49;
-  outline-offset: 5px;
-}
-
-.table-prompt {
-  margin: 100px 0;
-  text-align: center;
-  font-style: italic;
-}
-
-/* Dealer and card layout */
-
-.deal-stage {
-  position: relative;
-  z-index: 1;
-  margin-top: 28px;
-}
-
-.hand-scroll {
-  /* Allows cards to travel visibly from the deck */
-  overflow: visible;
-  padding: 30px 16px 32px;
-}
-
-.card-hand {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 18px;
-  width: 100%;
-  margin-inline: auto;
-}
-
-.card-slot {
-  width: clamp(150px, 15vw, 200px);
-  aspect-ratio: 5 / 7;
-  flex: 0 0 auto;
-}
-
-.card-deal {
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-}
-
-.deal-stage[data-ready="true"] .card-deal {
-  animation: deal-card 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-delay: var(--deal-delay, 0ms);
-}
-
-@keyframes deal-card {
-  0% {
-    opacity: 0;
-    transform:
-      translate(var(--deal-x, 0px), var(--deal-y, 0px))
-      rotate(-8deg)
-      scale(
-        var(--deal-scale-x, 0.5),
-        var(--deal-scale-y, 0.4)
-      );
-  }
-
-  8% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate(0, 0) rotate(0) scale(1);
-  }
-}
-
+button:focus-visible, a:focus-visible { outline: 2px solid #d9ad49; outline-offset: 3px; }
+/* Scroll stays inside the card row; flight clones are rendered above it. */
+.hand-scroll { overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 12px 0 18px; }
+.hand-scroll::-webkit-scrollbar { display: none; }
+.card-hand { display: flex; gap: 16px; width: max-content; min-width: 100%; justify-content: center; padding-inline: 16px; }
+.card-slot { width: var(--card-width); aspect-ratio: 5/7; flex: none; scroll-snap-align: center; }
+.card-deal { width: 100%; height: 100%; }
+.card-flight { position: fixed; z-index: 20; pointer-events: none; margin: 0; }
+.hand-controls { display: flex; justify-content: center; align-items: center; gap: 14px; color: #f3e8c5; font: italic 14px Georgia,serif; }
+.hand-controls button { width: 44px; height: 44px; border: 1px solid #ead69e66; border-radius: 50%; background: #07342299; color: inherit; cursor: pointer; font-size: 22px; }
+.hand-controls button:disabled { opacity: .35; cursor: default; }
 /* Playing cards */
 
 .playing-card {
@@ -338,89 +176,33 @@ body:has(dialog[open]) {
   overflow: hidden;
 }
 
-/* Mobile */
 
-@media (max-width: 600px) {
-  .portfolio-nav {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .portfolio-nav button {
-    min-width: 0;
-  }
-
-  .hand-scroll {
-    padding-inline: 0;
-  }
-
-  .card-hand {
-    gap: 12px;
-  }
-
-  .card-slot {
-    /* Fits two cards across narrow screens */
-    width: min(165px, calc((100% - 12px) / 2));
-  }
-
-  .detail-modal {
-    padding: 28px 24px;
-  }
+/* Smaller cards keep the title readable; details are in the modal. */
+.playing-card { padding: 32px 12px; }
+.card-content { gap: 7px; }
+.card-title { font-size: clamp(16px, 2.4cqh, 22px); overflow-wrap: anywhere; }
+.card-suit { font-size: clamp(24px, 4cqh, 40px); }
+.card-subtitle { font-size: 12px; }
+.card-corner { font-size: 18px; }
+.detail-modal { max-height: calc(100dvh - 32px); overscroll-behavior: contain; }
+.detail-modal h2 { padding-right: 22px; }
+@media (max-aspect-ratio: 1/1) {
+  .card-hand { justify-content: flex-start; padding-inline: calc((100cqw - var(--card-width))/2); }
+  .card-title { font-size: 20px; }
+  .detail-modal { width: calc(100vw - 20px); max-height: calc(100dvh - 24px); padding: 28px 24px; }
 }
-
-/* Reduced motion */
-
+@media (max-height: 650px) {
+  .card-subtitle { display: none; }
+  .card-suit { font-size: 24px; }
+  .playing-card { padding: 26px 9px; }
+  .card-content { gap: 4px; }
+  .card-title { font-size: 16px; }
+}
+@media (max-height: 520px) and (min-aspect-ratio: 1/1) {
+  .card-suit { display: none; }
+  .hand-controls { gap: 8px; }
+  .hand-controls button { width: 44px; height: 32px; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .deal-stage[data-ready="true"] .card-deal {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
-
-  .playing-card {
-    transition: none;
-  }
-}
-
-.table-back {
-  position: absolute;
-  bottom: 14%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-
-  min-height: 48px;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 4px;
-  background: transparent;
-
-  font-family: inherit;
-  font-style: italic;
-  font-size: clamp(18px, 2.5svh, 25px);
-  color: #f3e8c5;
-  white-space: nowrap;
-
-  cursor: pointer;
-  transition: color 180ms ease, text-shadow 180ms ease;
-}
-
-@media (hover: hover) {
-  .table-back:hover {
-    color: #fff9e9;
-    text-shadow:
-      0 0 8px rgb(255 238 192 / 65%),
-      0 0 20px rgb(255 221 140 / 35%);
-  }
-}
-
-.table-back:focus-visible {
-  outline: 2px solid #ead69e;
-  outline-offset: 4px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .table-back {
-    transition: none;
-  }
+  .playing-card, .portfolio-nav button, .table-back { transition: none; }
 }

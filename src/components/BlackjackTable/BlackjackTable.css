@@ -1,125 +1,42 @@
+/* The artwork and every overlay share this scene's coordinates. */
 .blackjack-table {
-  position: relative;
-  isolation: isolate;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  overflow: hidden;
-  background: #080c09;
+  position: relative; isolation: isolate; container-type: size;
+  width: min(100vw, 165svh); width: min(100vw, 165dvh);
+  height: min(100svh, 60.6061vw); height: min(100dvh, 60.6061vw);
+  overflow: hidden; background: #080c09;
 }
-
 .blackjack-table__background {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-
-  transform: scale(1.18);
-  transform-origin: 50% 75%;
-
-  pointer-events: none;
-  user-select: none;
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%;
+  object-fit: contain; object-position: center; transform: scale(1.18);
+  transform-origin: 50% 75%; pointer-events: none; user-select: none;
 }
-
-.blackjack-table__content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 0;
+.blackjack-table__content { position: relative; width: 100%; height: 100%; padding: 0; }
+.blackjack-table .dealer-area { position: absolute; top: 6%; left: 50%; transform: translateX(-50%); padding: 0; }
+.blackjack-table .dealer-deck { width: clamp(48px, 8cqh, 85px); }
+.blackjack-table .table-brand { position: absolute; top: 24%; left: 50%; transform: translateX(-50%); width: min(60%, 620px); margin: 0; padding: 0; }
+.deal-stage { position: absolute; z-index: 2; top: 48%; left: 5%; width: 90%; --card-width: min(17cqw, 20cqh, 180px); }
+.portfolio-nav { position: absolute; top: 64%; left: 50%; transform: translateX(-50%); width: min(68%, 760px); }
+.table-back { position: absolute; top: 84%; left: 50%; transform: translateX(-50%); z-index: 3; }
+/* Portrait composition: keep controls legible instead of shrinking the scene. */
+@media (max-aspect-ratio: 1/1) {
+  .blackjack-table { width: 100%; height: 100%; }
+  .blackjack-table__background { object-fit: cover; transform: none; object-position: center bottom; }
+  .blackjack-table .dealer-area { top: max(5%, env(safe-area-inset-top)); }
+  .blackjack-table .dealer-deck { width: clamp(52px, 9cqh, 80px); }
+  .blackjack-table .table-brand { top: 24%; width: 94%; }
+  .deal-stage { top: 44%; left: 0; width: 100%; --card-width: min(65cqw, 22cqh, 240px); }
+  .portfolio-nav { top: 59%; width: 92%; }
+  .table-back { top: auto; bottom: max(6%, env(safe-area-inset-bottom)); }
 }
-
-/* Deck near the dealer's side */
-.blackjack-table .dealer-area {
-  position: absolute;
-  top: 7%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0;
+/* Compact landscape: reserve the middle for readable cards. */
+@media (max-height: 650px) and (max-aspect-ratio: 1/1) {
+  .table-back { bottom: max(2%, env(safe-area-inset-bottom)); }
 }
-
-.blackjack-table .dealer-deck {
-  width: clamp(48px, 8svh, 85px);
-}
-
-/* Printed name */
-.blackjack-table .table-brand {
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(60%, 620px);
-  margin: 0;
-  padding: 0;
-}
-
-/* Dealt cards */
-.blackjack-table .deal-stage {
-  position: absolute;
-  top: 49%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 86%;
-  max-width: 1100px;
-  margin: 0;
-}
-
-.blackjack-table .hand-scroll {
-  padding: 10px 0;
-  overflow: visible;
-}
-
-.blackjack-table .card-hand {
-  flex-wrap: nowrap;
-  gap: clamp(6px, 1.2vw, 18px);
-}
-
-.blackjack-table .card-slot {
-  width: min(15vw, 19svh, 160px);
-  min-width: 0;
-  flex: 0 1 auto;
-}
-
-/* Menu stays in one place when cards are dealt */
-.blackjack-table .portfolio-nav {
-  position: absolute;
-  top: auto;
-  bottom: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: auto auto auto;
-  grid-template-areas:
-    "resume projects"
-    "prompt prompt"
-    "experience contact";
-
-  width: min(68%, 760px);
-  height: auto;
-  min-height: 0;
-
-  column-gap: 40px;
-  row-gap: 4px;
-  align-items: center;
-  align-content: center;
-
-  margin: 0;
-  padding: 0;
-}
-
-.blackjack-table .portfolio-nav button {
-  font-size: clamp(18px, 2.8svh, 27px);
-}
-
-.blackjack-table .table-prompt {
-  grid-area: prompt;
-  margin: 0;
-  padding: 4px 0;
-  line-height: 1.4;
-  text-align: center;
+@media (max-height: 520px) and (min-aspect-ratio: 1/1) {
+  .blackjack-table .dealer-area { top: 8%; left: 17%; }
+  .blackjack-table .dealer-deck { width: 45px; }
+  .blackjack-table .table-brand { top: 3%; width: 46%; }
+  .deal-stage { top: 33%; --card-width: min(22cqw, 29cqh); }
+  .portfolio-nav { top: 48%; width: 70%; }
+  .table-back { top: 82%; }
 }
